@@ -1,0 +1,56 @@
+<div class="container mt-4">
+    <h2>{{ isEditMode ? 'Edit Task' : 'Create Task' }}</h2>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          formControlName="title"
+        >
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea 
+          class="form-control" 
+          formControlName="description"
+        ></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Status</label>
+        <select 
+          class="form-select" 
+          formControlName="status"
+        >
+          <option value="To Do">To Do</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Done">Done</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Priority</label>
+        <select 
+          class="form-select" 
+          formControlName="priority"
+        >
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+      </div>
+      <button 
+        type="submit" 
+        class="btn btn-primary" 
+        [disabled]="taskForm.invalid"
+      >
+        {{ isEditMode ? 'Update' : 'Create' }} Task
+      </button>
+      <button 
+        type="button" 
+        class="btn btn-secondary ms-2" 
+        [routerLink]="['/tasks']"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
